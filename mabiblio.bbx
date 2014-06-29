@@ -1,0 +1,61 @@
+\ProvidesFile{mabiblio.bbx}
+\RequireBibliographyStyle{standard}
+\RequireBibliographyStyle{verbose-trad2} % change this if you're not using author-year
+%\DeclareFieldFormat[article,incollection,unpublished]{title}{#1}%No quotes for article titles
+\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}} % Theses like book titles
+
+\renewcommand{\newunitpunct}[0]{\addcomma\addspace}	% definit la virgule comme separateur
+
+\DefineBibliographyStrings{french}{%
+	in = {\emph{in}}%
+}
+
+\DeclareBibliographyDriver{book}{%	% redefinit l'affichage des differents champs
+	\printnames{author}%
+	\newunit\newblock
+	\printfield{title}%
+	\newunit\newblock
+	\printlist{location}%
+	\newunit
+	\printlist{publisher}%
+	\newunit
+	\printfield{year}%
+	\newunit
+	\iffieldundef{origyear}{%
+}{%
+\setunit*{\addspace}%
+\printtext[parens]{\printorigdate}%
+}%
+	\finentry}
+
+\DeclareBibliographyDriver{article}{%
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\usebibmacro{author/translator+others}%
+	\setunit{\labelnamepunct}\newblock
+	\usebibmacro{title}%
+	\newunit
+	\printlist{language}%
+	\newunit\newblock
+	\usebibmacro{byauthor}%
+	\newunit\newblock
+	\usebibmacro{bytranslator+others}%
+	\newunit\newblock
+	\printfield{version}%
+	\newunit\newblock%
+	\usebibmacro{journal+issuetitle}%
+	\newunit
+	\usebibmacro{byeditor+others}%
+	\newunit
+	\usebibmacro{note+pages}%
+	\newunit\newblock
+	\iftoggle{bbx:isbn}
+		{\printfield{issn}}
+		{}%
+	\newunit\newblock
+	\usebibmacro{doi+eprint+url}%
+	\newunit\newblock
+	\usebibmacro{addendum+pubstate}%
+	\setunit{\bibpagerefpunct}\newblock
+	\usebibmacro{pageref}%
+	\usebibmacro{finentry}}

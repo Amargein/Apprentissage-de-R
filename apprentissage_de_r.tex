@@ -1,0 +1,83 @@
+\documentclass[notitlepage,onecolumn,twoside,11pt,final]{article}
+
+\usepackage{xltxtra}
+	\setmainfont[Mapping=tex-text, Numbers={OldStyle}, Ligatures={Common}]{Linux Libertine O}
+	\setsansfont{TeX Gyre Adventor}
+	\setmonofont[Scale=0.85]{Anonymous Pro}
+
+\usepackage[a4paper, xetex]{geometry} % hmargin[ext,int],vmargin[top,bottom]
+	\widowpenalty=10000		% pour la gestion des veuves et des orphelines
+	\clubpenalty=10000
+	\raggedbottom
+\usepackage{setspace}
+\usepackage[english,francais]{babel}	% On indique que le document est en français.
+	\newcommand{\anglais}[1]{\foreignlanguage{english}{\emph{#1}}}
+\usepackage[protrusion=true]{microtype}
+\usepackage[autolanguage]{numprint}	% Offre la possibilité d'obtenir un meilleur affichage des grands nombres (avec la commande \nombre)
+\usepackage[threshold=4]{csquotes}
+
+\usepackage[bookmarks=true,hyperindex=true,colorlinks=false,linktoc=all,plainpages=false]{hyperref}	% permet des hyperliens cliquables
+	\urlstyle{tt}
+
+\usepackage{array}  % permet un meilleur affichage des tableaux
+	\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\usepackage{sectsty}
+	\allsectionsfont{\sffamily \mdseries}
+\usepackage{tocloft}
+	\renewcommand{\cftdot}{}
+	\renewcommand{\cfttoctitlefont}{\Large \sffamily}
+	\renewcommand{\cftsecfont}{\sffamily}
+	\renewcommand{\cftsubsecfont}{\sffamily}
+	\renewcommand{\cftsubsubsecfont}{\sffamily}
+	\renewcommand{\cftparafont}{\sffamily}
+	\renewcommand{\cftsubparafont}{\sffamily}
+\usepackage{abstract}
+	\setlength{\absleftindent}{5em}
+	\setlength{\absrightindent}{5em}
+\setcounter{tocdepth}{5}
+
+\usepackage{metalogo}
+\usepackage{graphicx}
+\usepackage{dirtree}	% Permet d'afficher des arborescences
+\usepackage{listings}
+	\lstset{basicstyle=\small \ttfamily \color{LightSlateGrey},frame=single}
+\usepackage[svgnames]{xcolor}
+	\newcommand{\code}[1]{\texttt{#1}}
+
+\usepackage{imakeidx}	% pour la creation d'index
+	\makeindex
+\usepackage[isbn=false, sorting=nyt, hyperref=true, url=false, citepages=omit, maxnames=4, minnames=1, bibstyle=mabiblio, citestyle=verbose-trad2, autocite=footnote]{biblatex}	% pour la gestion de la bibiliographie
+	\bibliography{bibliographie}
+\usepackage{fancyref}
+\usepackage[acronym,toc]{glossaries}
+	\makeglossaries
+	\newacronym{tug}{TUG}{\TeX{} User Group}
+
+\title{\sffamily Apprentissage de R pour un usage sociologique}
+\author{Théo \textsc{Henri}\\{\small Étudiants en master, Université de Poitiers}\\{\small \url{theo@henri-45.fr}}}
+\date{Ébauche --- \emph{Version du \today}}
+
+\begin{document}
+	\maketitle
+
+	\begin{onecolabstract}
+		Mon apprentissage de R au jour le jour.
+	\end{onecolabstract}
+	\vspace{2em}
+	
+	\onehalfspacing
+	
+	Lecture de l'ouvrage \cite{Cor10}.
+	
+	\pagebreak
+	\printglossaries
+	\nocite{*}
+	\printbibliography
+	\addcontentsline{toc}{section}{Références}
+
+	\pagebreak
+	\tableofcontents
+\end{document}
